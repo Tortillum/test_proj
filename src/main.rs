@@ -13,9 +13,15 @@ fn main() {
 
         io::stdin()
             .read_line(&mut guess)
-            .expect("Failed to read line! You are not to write any number!");
+            .expect("Failed to read line!");
 
-        let guess: u32 = match guess.trim().parse() {
+        let guess = guess.trim();
+
+        if guess.to_lowercase() == "quit" {
+            break;
+        }
+
+        let guess: u32 = match guess.parse() {
             Ok(num) => num,
             Err(_) => continue,
         };
